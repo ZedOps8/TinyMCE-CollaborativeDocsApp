@@ -1,0 +1,33 @@
+﻿@model IEnumerable<TextEditor.Models.Doc>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<!-- Create New Button with improved styling -->
+<div class="d-flex justify-content-center align-items-center"
+     style="width: 150px; height:200px; background-color:lightgray; font-size: 100px;">
+    <!-- Link to create a new document -->
+    <a style="text-decoration:none; color: black;" asp-action="Create">+</a>
+</div>
+<!-- Label for creating a new blank document -->
+<span style="font-weight:bold"> Blank Doc</span>
+
+<hr />
+
+<div class="row">
+    <!-- Loop through each document in the model -->
+    @foreach (var item in Model)
+    {
+        <!-- Display each document as a clickable icon -->
+        <div class="d-flex justify-content-center align-items-center"
+             style="width: 150px; height:200px; background-color:lightblue; font-size: 100px;">
+            <!-- Link to edit the document with an icon -->
+            <a style="text-decoration:none; color: black;" asp-action="Edit" asp-route-id="@item.Id">📄</a>
+        </div>
+        <!-- Display the title of the document -->
+        <span style="font-weight: bold">@item.Title</span>
+    }
+</div>

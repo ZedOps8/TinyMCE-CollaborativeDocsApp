@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TextEditor</title>
+
+    <!-- Link to Bootstrap CSS for styling -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Link to site-specific CSS files -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/TextEditor.styles.css" asp-append-version="true" />
+
+    <!-- TinyMCE script for rich text editor functionality -->
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/ia4fannl1fvph663vnws6hbme1otyr5agyz98dkpg8kujb09/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <!-- Initialize TinyMCE editor -->
+    <script>
+        tinymce.init({
+            selector: '#tiny',  // Target element with ID 'tiny' (textarea) for TinyMCE editor
+            plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+            toolbar_mode: 'floating',
+            height: 500,
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <!-- Navigation bar -->
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <!-- Brand link to the home page -->
+                <a class="navbar-brand" asp-area="" asp-controller="Docs" asp-action="Index">TextEditor</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <!-- Navigation link to the home page -->
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Docs" asp-action="Index">Home</a>
+                        </li>
+                    </ul>
+                    <!-- Partial view for login information (e.g., user login status, links) -->
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Main content area where views are rendered -->
+        <main role="main" class="pb-3">
+            @RenderBody() <!-- Placeholder for view content -->
+        </main>
+    </div>
+
+    <!-- Footer section -->
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - TextEditor - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <!-- Script references -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <!-- Render additional scripts defined in individual views -->
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
